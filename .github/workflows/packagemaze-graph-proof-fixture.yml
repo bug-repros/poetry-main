@@ -1,0 +1,37 @@
+name: PackageMaze graph proof fixture
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/packagemaze-graph-proof-fixture.yml"
+      - "packagemaze-preproduction-graph-proof/**"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/packagemaze-graph-proof-fixture.yml"
+      - "packagemaze-preproduction-graph-proof/**"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verify deterministic bounded graph fixture
+        working-directory: packagemaze-preproduction-graph-proof
+        run: |
+          set -euo pipefail
+          node generate-lock.mjs
+          git diff --exit-code -- package.json package-lock.json
+          test "$(sha256sum package.json | cut -d ' ' -f 1)" = "469a579d136cdf1da702cc199453d02d9ac87546715940da1126b4fb8019c60a"
+          test "$(sha256sum package-lock.json | cut -d ' ' -f 1)" = "a74880dc9f8ff0e9822f453ba49c63c8238d91e41ea34803155505568e435e7c"
+          test "$(jq '.packages[\"\"].dependencies | length' package-lock.json)" = 129
+          test "$(jq '[.packages | keys[] | select(. != \"\")] | length' package-lock.json)" = 130
+          test "$(jq '.packages[\"node_modules/packagemaze-graph-proof-direct-000\"].dependencies | length' package-lock.json)" = 1
+          test "$(wc -c < package-lock.json)" -le 65536
