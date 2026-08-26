@@ -9,6 +9,10 @@ resolved nodes and 130 edges; direct dependency `...-000` has one resolved
 transitive child. This forces cursor pagination while remaining inside the
 scanner's 4,096-relationships-per-entry and 50-MiB lock limits.
 
+The current revision advances the resolved version of `...-000` while keeping
+the same node and edge topology. That produces new dependency evidence for the
+hosted proof instead of reusing a historical equivalent-predecessor chain.
+
 The generated inputs are immutable proof evidence. Regenerate them only with
 `node generate-lock.mjs`, review both recorded SHA-256 digests, and merge the
 change before selecting the resulting exact sealed observation. Retain this
@@ -19,5 +23,5 @@ rows directly in PackageMaze storage.
 
 Expected generated input digests:
 
-- `package.json`: `sha256:afa994a987439239c1bcf4fede46f683a525ed8df2131881ab1eda5079ff6be7`
-- `package-lock.json`: `sha256:f017f7f0369b32a99ec4366fe39468df9e803c05696423d63010feeecdf8afd3`
+- `package.json`: `sha256:c559ab5dcf505e61f23c5900e9665a8bdf50dff5e7aa19b32a60ab7b4f0874b4`
+- `package-lock.json`: `sha256:6b1e7f988333b711c49809091536cdc2dbd60dd50c499595b7bbcf79ddff7d5c`

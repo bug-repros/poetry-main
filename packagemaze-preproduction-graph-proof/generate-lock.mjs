@@ -2,10 +2,13 @@ import { createHash } from "node:crypto";
 import { writeFileSync } from "node:fs";
 
 const directCount = 129;
-const fixtureVersion = "1.0.1";
+const fixtureVersion = "1.0.2";
 const dependencyEntries = Array.from({ length: directCount }, (_, index) => {
   const suffix = index.toString().padStart(3, "0");
-  return [`packagemaze-graph-proof-direct-${suffix}`, "1.0.0"];
+  return [
+    `packagemaze-graph-proof-direct-${suffix}`,
+    index === 0 ? "1.0.1" : "1.0.0",
+  ];
 });
 const dependencies = Object.fromEntries(dependencyEntries);
 const packages = {
