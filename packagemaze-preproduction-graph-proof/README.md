@@ -19,5 +19,5 @@ rows directly in PackageMaze storage.
 
 Expected generated input digests:
 
-- `package.json`: `sha256:469a579d136cdf1da702cc199453d02d9ac87546715940da1126b4fb8019c60a`
-- `package-lock.json`: `sha256:a74880dc9f8ff0e9822f453ba49c63c8238d91e41ea34803155505568e435e7c`
+- `package.json`: `sha256:afa994a987439239c1bcf4fede46f683a525ed8df2131881ab1eda5079ff6be7`
+- `package-lock.json`: `sha256:f017f7f0369b32a99ec4366fe39468df9e803c05696423d63010feeecdf8afd3`

@@ -1,7 +1,7 @@
 {
   "name": "packagemaze-preproduction-graph-proof",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Deterministic PackageMaze preproduction dependency graph proof fixture",
   "dependencies": {
     "packagemaze-graph-proof-direct-000": "1.0.0",

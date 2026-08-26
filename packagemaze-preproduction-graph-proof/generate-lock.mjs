@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { writeFileSync } from "node:fs";
 
 const directCount = 129;
+const fixtureVersion = "1.0.1";
 const dependencyEntries = Array.from({ length: directCount }, (_, index) => {
   const suffix = index.toString().padStart(3, "0");
   return [`packagemaze-graph-proof-direct-${suffix}`, "1.0.0"];
@@ -10,7 +11,7 @@ const dependencies = Object.fromEntries(dependencyEntries);
 const packages = {
   "": {
     name: "packagemaze-preproduction-graph-proof",
-    version: "1.0.0",
+    version: fixtureVersion,
     dependencies,
   },
 };
@@ -34,7 +35,7 @@ const manifest = `${JSON.stringify(
   {
     name: "packagemaze-preproduction-graph-proof",
     private: true,
-    version: "1.0.0",
+    version: fixtureVersion,
     description:
       "Deterministic PackageMaze preproduction dependency graph proof fixture",
     dependencies,
@@ -45,7 +46,7 @@ const manifest = `${JSON.stringify(
 const lock = `${JSON.stringify(
   {
     name: "packagemaze-preproduction-graph-proof",
-    version: "1.0.0",
+    version: fixtureVersion,
     lockfileVersion: 3,
     requires: true,
     packages,
